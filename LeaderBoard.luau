@@ -1,8 +1,11 @@
-game.Players.PlayerAdded:Connect(function(player)
-	-- player leaderboard stats
-	local folder = Instance.new("Folder", player)
-	folder.Name = "leaderstats"
-	-- money leadboard value 
-	local Money = Instance.new("IntValue", folder)
-	Money.Name = "Money"
-end)
+local Players = game:GetService("Players")
+local function leaderboardSetup(player)
+	local leaderstats = Instance.new("Folder")
+	leaderstats.Name = "leaderstats"
+	leaderstats.Parent = player
+	
+	local money = Instance.new("IntValue")
+	money.Name = "Money"
+	money.Parent = leaderstats
+end
+Players.PlayerAdded:Connect(leaderboardSetup)
